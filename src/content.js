@@ -10,13 +10,14 @@ async function loadEntries() {
     return andmed
 }
 
-async function fetchTehnoblogiEntries() {
-    // lae kõik andmed (entries)
-    // filtreeri välja ainult tehnoblogi kirjed
+// async function loadAssets() {
+//     const url = `${apiHost}/spaces/${space}/environments/${process.env.REACT_APP_ENVIRONMENT}/assets?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
+//     const response = await fetch(url)
+//     const result = await response.json()
+//     console.log('Assets:',result)
+//     return result 
+// }
 
-}
-
-//Tee funktsioon ainult enda andmete tagastamiseks
 
 export {
     loadEntries
