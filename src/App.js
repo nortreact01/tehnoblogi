@@ -1,6 +1,11 @@
 import './App.css';
 import { useEffect } from 'react';
 import {loadEntries} from './content'
+import { BrowserRouter, Link, Switch, Route, Routes } from "react-router-dom";
+import Kontakt from './Kontakt'
+import Uudis from './Uudis'
+import Esileht from './Esileht'
+import Konteiner from './Konteiner';
 
 function App() {
 
@@ -13,9 +18,16 @@ function App() {
   }, [])
 
   return (
-    <div className="Konteiner">
-      <h1>Siia tuleb uudiste blogi</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Konteiner />} >
+          <Route index element={<Esileht />} />
+          <Route path="/kontakt" element={<Kontakt />} />
+          <Route path="/uudis/:uudis_id" element={<Uudis />} />
+        </Route>
+      </Routes>
+
+    </BrowserRouter>
   );
 }
 
