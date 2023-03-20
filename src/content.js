@@ -7,6 +7,8 @@ const apiHost = "https://cdn.contentful.com"
 async function loadEntries() {
     const result = await fetch(apiHost + endpoint)
     const andmed = await result.json()
+    const piltideAndmed = andmed.includes.Asset
+    console.log(piltideAndmed[0].fields.file.url)
     return andmed
 }
 

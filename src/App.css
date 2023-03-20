@@ -22,3 +22,7 @@ body {
   margin-top: 10px;
   padding: 10px;
 }
+
+.postituse_pilt {
+  max-width: 100%;
+}

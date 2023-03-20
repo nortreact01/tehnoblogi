@@ -22,13 +22,31 @@ function App() {
   useEffect(() => {
     const laadimine = async () => {
       const tulemus = await loadEntries()
+
+      //leia piltide url-id
+      const piltideAndmed = tulemus.includes.Asset
+      const piltideUrlid = {} 
+      
+      piltideAndmed.forEach(element => {
+        console.log(element.fields.file.url, element.sys.id)
+        piltideUrlid[element.sys.id] = 'https:' + element.fields.file.url
+      });
+
+      console.log(piltideUrlid)
+
+
       console.log(tulemus.items[3].sys.contentType.sys.id)
       let postitused = tulemus.items.filter((element) => {
         return element.sys.contentType.sys.id === 'postitus'
       })
 
       postitused = postitused.map((element) => {
-        return {...element.fields, loomine: element.sys.createdAt}
+        console.log(element.fields.paisepilt.sys.id)
+        return {
+          ...element.fields, 
+          loomine: element.sys.createdAt,
+          paisepildiUrl: piltideUrlid[element.fields.paisepilt.sys.id]
+        }
       })
       console.log(postitused)
       laePostitused(postitused)

@@ -7,6 +7,7 @@ function Postitus({postitused}) {
     return (
         <div> 
             <h1>{postitus.pealkiri}</h1>
+            <img className="postituse_pilt" src={postitus.paisepildiUrl} />
             <p>{postitus.loomine}</p>
             <div>
                 {documentToReactComponents(postitus.sisu)}

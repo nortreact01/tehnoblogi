@@ -1,0 +1,19 @@
+.sisestusvali {
+    margin-bottom: 30px;
+}
+
+.sisestusvali.viga input{
+    border-color: red;
+    border-style: solid;
+    border-width: 2px;
+    width: fit-content;
+}
+
+.sisestusvali.viga .veateade {
+    color: red;
+}
+
+.sisestusvali input {
+    padding: 5px;
+    font-size: 1.5rem;
+}
