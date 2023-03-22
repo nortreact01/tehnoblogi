@@ -1,5 +1,7 @@
 import { useState } from "react"
 import SisestusVali from "./komponendid/SisestusVali"
+import {saadaKontakt} from './content'
+import { useNavigate} from "react-router-dom"
 
 function Kontakt() {
     const [nimi, setNimi] = useState('')
@@ -10,7 +12,9 @@ function Kontakt() {
         email: ''
     })
 
-    const valideeri = () => {
+    const navigate = useNavigate()
+
+    const saada = async () => {
         let onKorras = true
         if (nimi.length < 1) {
             setVead( (eelmine) => ({...eelmine, nimi: 'Nimi on kohustuslik'}))
@@ -30,11 +34,10 @@ function Kontakt() {
         }
 
         if (onKorras) {
-            console.log(
-                {
-                    nimi, email, sisu
-                }
-            )
+            const kasSaadetud = await saadaKontakt(nimi, email, sisu)
+            if (kasSaadetud) {
+                navigate("/")
+            }
         } else {
             console.log('????')
         }
@@ -65,7 +68,7 @@ function Kontakt() {
                     {sisu}
                 </textarea>
                 <div>
-                <button onClick={valideeri} >Saada</button>
+                <button onClick={saada} >Saada</button>
                 </div>
             </div>
         </div>

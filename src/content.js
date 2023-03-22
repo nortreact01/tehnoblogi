@@ -20,7 +20,30 @@ async function loadEntries() {
 //     return result 
 // }
 
+async function saadaKontakt(nimi, email, tekst) {
+    const andmed = {
+        nimi: nimi,
+        email: email,
+        teade: tekst
+    }
+
+    const andmedTekstina = JSON.stringify(andmed)
+    const result = await fetch(
+        "http://localhost:8000/api/kontakt", {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            method: "POST",
+            body:  andmedTekstina   
+        }
+    )
+
+    console.log(result)
+    return true
+}
+
 
 export {
-    loadEntries
+    loadEntries,
+    saadaKontakt
 }
